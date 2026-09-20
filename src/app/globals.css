@@ -1792,11 +1792,28 @@ h2 {
 }
 .navigation-bar .nav a {
   min-height: 20px;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
   text-align: center;
   padding: 2px 4px;
+  color: white;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
   font-size: 0.68rem;
   line-height: 1.15;
+  text-decoration: none;
+  transform: none;
+}
+.navigation-bar .nav a:hover {
+  color: #f2b2a2;
+  background: transparent;
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transform: none;
 }
 @media (max-width: 760px) {
   .navigation-bar {
