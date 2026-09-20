@@ -35,17 +35,21 @@ export function ContactForm({
         });
       }}
     >
-      <p className="notice">
-        Demo enquiry: details stay in this page. Nothing is submitted to ABS.
-        Please use example information.
-      </p>
-      <label>
+      <div className="form-notice" role="note">
+        <strong>Demonstration only</strong>
+        <p className="small">
+          This form does not send or store messages. It creates a draft preview
+          in your browser.
+        </p>
+      </div>
+      <label htmlFor="contact-name">
         Your name
-        <input name="name" autoComplete="name" required maxLength={100} />
+        <input id="contact-name" name="name" autoComplete="name" required maxLength={100} />
       </label>
-      <label>
+      <label htmlFor="contact-email">
         Email address
         <input
+          id="contact-email"
           name="email"
           type="email"
           autoComplete="email"
@@ -53,9 +57,10 @@ export function ContactForm({
           maxLength={254}
         />
       </label>
-      <label>
+      <label htmlFor="contact-topic">
         How can we help?
         <select
+          id="contact-topic"
           name="topic"
           defaultValue={
             property
@@ -76,9 +81,10 @@ export function ContactForm({
           Example property: <strong>{property}</strong>
         </p>
       )}
-      <label>
+      <label htmlFor="contact-message">
         Your message
         <textarea
+          id="contact-message"
           name="message"
           rows={5}
           required
@@ -96,7 +102,7 @@ export function ContactForm({
         <span>
           I understand this is a demonstration and have read the{" "}
           <Link className="text-link" href="/legal/privacy">
-            privacy placeholder
+            privacy notice
           </Link>
           .
         </span>

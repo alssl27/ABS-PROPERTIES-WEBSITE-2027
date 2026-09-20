@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
+import { site } from "@/lib/site";
 export function Footer() {
+  const socialLinks = Object.entries(site.social).filter(([, href]) => href);
   return (
     <footer className="site-footer">
       <div className="footer-top">
@@ -12,12 +14,20 @@ export function Footer() {
               alt="ABS"
               width={52}
               height={94}
-              preload
             />
             <span>Properties</span>
           </Link>
           <p>Homes, thoughtfully managed.</p>
           <p className="muted">UK lettings & property management.</p>
+          {socialLinks.length > 0 && (
+            <div className="social-links" aria-label="Social media">
+              {socialLinks.map(([network, href]) => (
+                <a key={network} href={href} target="_blank" rel="noreferrer">
+                  {network}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
         <div>
           <h2>Find your way</h2>
@@ -31,6 +41,12 @@ export function Footer() {
           <Link href="/contact">Contact</Link>
           <Link href="/legal/complaints">Complaints & redress</Link>
           <Link href="/legal/fees">Fees & protection</Link>
+        </div>
+        <div className="footer-contact">
+          <h2>Contact ABS</h2>
+          {site.email ? <a href={`mailto:${site.email}`}>{site.email}</a> : <p className="muted">Verified contact details will be added before launch.</p>}
+          {site.phone && <a href={`tel:${site.phone}`}>{site.phone}</a>}
+          {site.officeHours && <p className="muted">{site.officeHours}</p>}
         </div>
       </div>
       <div className="footer-bottom">

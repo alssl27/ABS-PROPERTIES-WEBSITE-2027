@@ -64,6 +64,38 @@ export default function Landlords() {
           </div>
         ))}
       </div>
+      <section className="trust-panel" aria-labelledby="trust-heading">
+        <div className="trust-panel-image">
+          <Image
+            src="/images/compliance-regulation.jpeg"
+            alt="Illustration representing policies, compliance and regulations"
+            fill
+            sizes="(max-width:760px) 100vw, 45vw"
+          />
+        </div>
+        <div className="trust-panel-copy">
+          <span className="overline">Information to verify</span>
+          <h2 id="trust-heading">
+            Good management starts with clear responsibilities.
+          </h2>
+          <p>
+            Fees, protection arrangements, memberships and service scope should
+            be confirmed in writing before any instruction is accepted.
+          </p>
+          <div className="trust-badge">
+            <Image
+              src="/images/dps-logo.jpeg"
+              alt="Deposit Protection Service logo"
+              width={96}
+              height={96}
+            />
+            <p className="small">
+              Deposit protection information is shown for context only and
+              requires verification before launch.
+            </p>
+          </div>
+        </div>
+      </section>
       <section className="faq">
         <h2>Good questions. Clear beginnings.</h2>
         <details>

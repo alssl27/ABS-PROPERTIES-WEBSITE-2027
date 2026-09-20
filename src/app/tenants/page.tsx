@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { PageIntro, ButtonLink, CallToAction } from "@/components/ui";
 export const metadata = {
   title: "Tenants",
@@ -14,6 +15,26 @@ export default function Tenants() {
         description="A clearer path from your first search to your next chapter."
       />
       <ButtonLink href="/properties">Explore homes</ButtonLink>
+      <section className="tenant-feature" aria-labelledby="tenant-feature-heading">
+        <div className="tenant-feature-image">
+          <Image
+            src="/images/moving-home.jpeg"
+            alt="People holding keys while moving into a home"
+            fill
+            sizes="(max-width:760px) 100vw, 45vw"
+          />
+        </div>
+        <div>
+          <span className="overline">A considered move</span>
+          <h2 id="tenant-feature-heading">
+            Know what to ask before you commit.
+          </h2>
+          <p>
+            Use each stage of the journey to check the practical details:
+            costs, documents, accessibility, repairs and move-in arrangements.
+          </p>
+        </div>
+      </section>
       <div className="steps">
         {[
           [

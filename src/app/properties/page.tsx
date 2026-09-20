@@ -17,6 +17,15 @@ export default async function PropertiesPage({
   const params = await searchParams;
   const query = parsePropertyQuery(params);
   const result = await properties.search(query);
+  const hasFilters = Boolean(
+    query.location ||
+      query.minBedrooms !== undefined ||
+      query.maxRent !== undefined ||
+      query.type ||
+      query.furnished ||
+      query.availableOnly ||
+      query.sort,
+  );
   function pageHref(page: number) {
     const next = new URLSearchParams();
     for (const [key, value] of Object.entries(params)) {
@@ -34,12 +43,38 @@ export default async function PropertiesPage({
       <SearchForm key={JSON.stringify(query)} query={query} expanded />
       <div className="results-heading">
         <h2>
-          {result.total} {result.total === 1 ? "property" : "properties"} found
+          {result.total} example {result.total === 1 ? "home" : "homes"} found
         </h2>
-        <Link className="text-link" href="/properties">
-          Clear filters
-        </Link>
+        {hasFilters && (
+          <Link className="text-link" href="/properties">
+            Clear filters
+          </Link>
+        )}
       </div>
+      {hasFilters && (
+        <div className="active-filters" aria-label="Active search filters">
+          {query.location && <span>Location: {query.location}</span>}
+          {query.minBedrooms !== undefined && (
+            <span>{query.minBedrooms}+ bedrooms</span>
+          )}
+          {query.maxRent !== undefined && (
+            <span>Up to £{query.maxRent.toLocaleString("en-GB")} pcm</span>
+          )}
+          {query.type && <span>{query.type}</span>}
+          {query.furnished && <span>{query.furnished}</span>}
+          {query.availableOnly && <span>Available examples</span>}
+          {query.sort && (
+            <span>
+              Sorted:{" "}
+              {query.sort === "rent-asc"
+                ? "lowest rent"
+                : query.sort === "rent-desc"
+                  ? "highest rent"
+                  : "most bedrooms"}
+            </span>
+          )}
+        </div>
+      )}
       <DemoNotice />
       {result.items.length ? (
         <div className="property-grid results-grid">

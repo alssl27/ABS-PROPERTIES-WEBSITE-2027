@@ -16,8 +16,8 @@ export default function About() {
       <div className="content-grid">
         <div className="content-image">
           <Image
-            src="/images/interior.webp"
-            alt="Illustrative comfortable living room with natural light"
+            src="/images/office-gallery-oldham.jpeg"
+            alt="ABS Properties office location at Gallery Oldham"
             fill
             sizes="(max-width:760px) 100vw, 50vw"
           />
@@ -40,6 +40,25 @@ export default function About() {
           </p>
         </div>
       </div>
+      <section className="brand-story" aria-labelledby="brand-story-heading">
+        <div className="brand-story-mark">
+          <Image
+            src="/images/abs-properties-wordmark.jpeg"
+            alt="ABS Properties sales and lettings"
+            width={817}
+            height={145}
+          />
+        </div>
+        <div>
+          <span className="overline">Our identity</span>
+          <h2 id="brand-story-heading">A local name with a clear purpose.</h2>
+          <p>
+            The ABS Properties identity brings homes, lettings and practical
+            guidance together in one place. Business details and service areas
+            will be confirmed before launch.
+          </p>
+        </div>
+      </section>
       <div className="steps">
         {[
           [

@@ -6,6 +6,12 @@ export const site = {
   officeAddress: process.env.NEXT_PUBLIC_OFFICE_ADDRESS || "",
   officeHours: process.env.NEXT_PUBLIC_OFFICE_HOURS || "",
   mapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+  social: {
+    facebook: "",
+    instagram: "",
+    linkedin: "",
+    x: "",
+  },
 };
 export const money = (value: number) =>
   new Intl.NumberFormat("en-GB", {

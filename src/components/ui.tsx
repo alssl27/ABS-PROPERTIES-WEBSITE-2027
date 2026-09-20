@@ -44,7 +44,7 @@ export function PropertyCard({ property: p }: { property: Property }) {
           sizes="(max-width: 650px) 100vw, (max-width: 1000px) 50vw, 33vw"
         />
         <span className="photo-label">
-          {p.available ? "Example listing" : "Example · let agreed"}
+          {p.available ? "Available example" : "Let agreed example"}
         </span>
       </Link>
       <div className="property-price">
@@ -64,6 +64,10 @@ export function PropertyCard({ property: p }: { property: Property }) {
         {p.bathrooms} bathroom{p.bathrooms > 1 ? "s" : ""} <span>·</span>{" "}
         {p.type}
       </p>
+      <p className="property-card-description">{p.description}</p>
+      <Link className="card-action" href={`/properties/${p.slug}`}>
+        View property <Arrow />
+      </Link>
     </article>
   );
 }

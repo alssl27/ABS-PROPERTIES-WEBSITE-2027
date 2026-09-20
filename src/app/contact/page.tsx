@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PageIntro } from "@/components/ui";
 import { ContactForm } from "@/components/contact-form";
 import { site } from "@/lib/site";
@@ -26,6 +27,14 @@ export default async function Contact({
       />
       <div className="contact-grid">
         <div>
+          <div className="contact-mark" aria-hidden="true">
+            <Image
+              src="/images/abs-key-house.jpeg"
+              alt=""
+              width={152}
+              height={176}
+            />
+          </div>
           <h2>Start with a conversation.</h2>
           <p>
             Tell us a little about what you are looking for using the enquiry
@@ -41,6 +50,13 @@ export default async function Contact({
             <p className="notice">
               Verified email, phone number, office address and opening hours
               will be added before launch.
+            </p>
+          )}
+          {site.phone && (
+            <p>
+              <a className="text-link" href={`tel:${site.phone}`}>
+                {site.phone}
+              </a>
             </p>
           )}
           <p className="notice">
