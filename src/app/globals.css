@@ -1768,14 +1768,14 @@ h2 {
   display: block;
   width: 100%;
   margin: 0;
+  padding: 5px 17px;
   background: white;
 }
 .brand-banner-image {
   display: block;
   width: 100%;
-  height: clamp(48px, 6.4vw, 88px);
-  object-fit: cover;
-  object-position: center;
+  height: auto;
+  object-fit: contain;
 }
 .navigation-bar {
   display: flex;
