@@ -1774,16 +1774,43 @@ h2 {
   object-position: center;
 }
 .navigation-bar {
+  position: relative;
   display: flex;
+  justify-content: center;
   width: 100%;
-  padding: 12px 0;
+  padding: 8px 20px;
   background: #0f2a43;
 }
+.navigation-bar .menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  min-width: 150px;
+  min-height: 36px;
+  padding: 5px 13px;
+  color: white;
+  background: transparent;
+  border: 1px solid rgb(255 255 255 / 45%);
+  font-size: 0.85rem;
+}
 .navigation-bar .nav {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 20;
+  display: none;
+  width: min(360px, calc(100% - 40px));
+  padding: 10px;
+  background: #0f2a43;
+  border: 1px solid rgb(255 255 255 / 24%);
+  box-shadow: 0 14px 24px rgb(15 28 29 / 20%);
+  transform: translateX(-50%);
+}
+.navigation-bar .nav.open {
   display: grid;
-  width: 100%;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0;
+  grid-template-columns: 1fr;
+  gap: 7px;
 }
 .navigation-bar .nav a {
   justify-content: center;
@@ -1803,11 +1830,11 @@ h2 {
   }
   .navigation-bar .nav {
     position: static;
-    display: none;
-    grid-template-columns: 1fr;
+    width: 100%;
     padding: 10px 0 0;
     border: 0;
     box-shadow: none;
+    transform: none;
   }
   .navigation-bar .nav.open {
     display: flex;
