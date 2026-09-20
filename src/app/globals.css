@@ -169,7 +169,7 @@ img {
 .text-link {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 18px;
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: underline;
@@ -1113,7 +1113,7 @@ img {
     grid-column: auto;
   }
   .button-row {
-    gap: 10px;
+    gap: 15px;
   }
   .hero .button {
     font-size: 0.86rem;
@@ -1210,13 +1210,14 @@ h2 {
   min-height: 0;
   padding: 0;
   color: white;
-  background: #0f2a43;
+  background: transparent;
   border-bottom: 1px solid rgb(255 255 255 / 24%);
   box-shadow: 0 3px 16px rgb(15 28 29 / 20%);
 }
 .brand-banner {
   display: block;
-  width: 100%;
+  width: 30%;
+  margin-inline: auto;
   background: white;
 }
 .brand-banner-image {
@@ -1316,7 +1317,7 @@ h2 {
   display: flex;
   align-items: center;
   background:
-    linear-gradient(90deg, rgb(15 28 29 / 88%) 0%, rgb(15 28 29 / 70%) 48%, rgb(15 28 29 / 34%) 100%),
+    linear-gradient(90deg, rgb(9 65 126 / 96%) 0%, rgb(9 65 126 / 82%) 48%, rgb(9 65 126 / 50%) 100%),
     url("/images/terraces.webp") center / cover no-repeat;
 }
 .hero-copy {
@@ -1699,7 +1700,7 @@ h2 {
   align-items: center;
   position: relative;
   background:
-    linear-gradient(90deg, rgb(15 28 29 / 88%) 0%, rgb(15 28 29 / 70%) 48%, rgb(15 28 29 / 34%) 100%),
+    linear-gradient(90deg, rgb(9 65 126 / 96%) 0%, rgb(9 65 126 / 82%) 48%, rgb(9 65 126 / 50%) 100%),
     url("/images/terraces.webp") center / cover no-repeat;
 }
 .hero-copy {
@@ -1757,12 +1758,18 @@ h2 {
 
 /* Banner header with navigation controls beneath it. */
 .site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 30;
   min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   padding: 0;
-  background: #0f2a43;
+  background: transparent;
+  border-bottom: 0;
+  box-shadow: none;
 }
 .brand-banner {
   display: block;
@@ -1781,47 +1788,67 @@ h2 {
   display: flex;
   width: 100%;
   margin: 0;
-  padding: 0;
-  background: #0f2a43;
+  padding: 16px 24px;
+  background: transparent;
 }
 .navigation-bar .nav {
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-  gap: 0;
+  display: flex;
+  align-items: center;
+  width: 60%;
+  margin-inline: auto;
+  gap: 12px;
 }
 .navigation-bar .nav a {
-  min-height: 0;
+  min-height: 22px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 4px;
+  padding: 4px 5px;
   color: white;
   background: transparent;
   border: 0;
-  border-radius: 0;
+  border-radius: 3px;
   box-shadow: none;
-  font-size: 0.68rem;
-  line-height: 1;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.2;
   text-decoration: none;
   transform: none;
 }
 .navigation-bar .nav a:hover {
-  color: #f2b2a2;
+  color: #d62828;
   background: transparent;
   border: 0;
-  text-decoration: underline;
-  text-underline-offset: 3px;
   transform: none;
+}
+.navigation-bar .nav .nav-cta {
+  margin-left: auto;
+  color: white;
+  background: #c62828;
+  border: 1px solid #a91f1f;
+  border-radius: 3px;
+  box-shadow: 0 3px 10px rgb(80 12 12 / 25%);
+}
+.navigation-bar .nav .nav-cta:hover {
+  color: white;
+  background: #a91f1f;
+  border-color: #861919;
 }
 @media (max-width: 760px) {
   .navigation-bar {
     display: block;
-    padding: 0;
+    padding: 12px;
   }
   .navigation-bar .nav {
+    display: grid;
     width: 100%;
+    margin-inline: 0;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .navigation-bar .nav .nav-cta {
+    margin-left: 0;
   }
 }

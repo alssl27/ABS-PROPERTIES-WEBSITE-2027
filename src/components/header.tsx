@@ -1,20 +1,22 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 
 export function Header() {
   return (
     <header className="site-header">
-      <Link href="/" className="brand-banner" aria-label="ABS Properties home">
-        <Image
-          className="brand-banner-image"
-          src="/images/abs-properties-banne-new.png"
-          alt="ABS Properties"
-          width={2160}
-          height={725}
-          preload
-        />
-      </Link>
+      <nav className="navigation-bar" aria-label="Primary navigation">
+        <div className="nav">
+          <Link href="/properties">Rent</Link>
+          <Link href="/properties">Buy</Link>
+          <Link href="/landlords">Landlords</Link>
+          <Link href="/tenants">Tenants</Link>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
+          <Link className="nav-cta" href="/contact?topic=valuation">
+            Book valuation
+          </Link>
+        </div>
+      </nav>
     </header>
   );
 }

@@ -16,7 +16,6 @@ export default async function Home() {
     <>
       <section className="hero">
         <div className="hero-copy">
-          <p className="hero-kicker">ABS Properties · UK lettings & management</p>
           <h1>
             Find your
             <br />
@@ -29,7 +28,6 @@ export default async function Home() {
               Book a valuation
             </ButtonLink>
           </div>
-          <p className="hero-proof">Clear information. Considered service. A better move.</p>
         </div>
       </section>
       <div className="container hero-search">
