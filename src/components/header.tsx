@@ -19,22 +19,20 @@ export function Header() {
       <Link href="/" className="brand-banner" aria-label="ABS Properties home">
         <Image
           className="brand-banner-image"
-          src="/images/abs-properties-banner.png"
+          src="/images/abs-properties-banne-new.png"
           alt="ABS Properties"
-          width={2000}
-          height={500}
+          width={2160}
+          height={725}
           preload
         />
       </Link>
-      <div className="navigation-bar">
-        <nav className="nav" aria-label="Main navigation">
-          {links.map(([label, href]) => (
-            <Link key={label} href={href}>
-              {label}
-            </Link>
-          ))}
-        </nav>
-      </div>
+      <nav className="header-links" aria-label="Main navigation">
+        {links.map(([label, href]) => (
+          <Link key={label} href={href}>
+            {label}
+          </Link>
+        ))}
+      </nav>
     </header>
   );
 }
