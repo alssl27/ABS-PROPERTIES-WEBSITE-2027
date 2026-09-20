@@ -1769,7 +1769,7 @@ h2 {
 .brand-banner-image {
   display: block;
   width: 100%;
-  height: clamp(92px, 20vw, 230px);
+  height: clamp(37px, 8vw, 92px);
   object-fit: contain;
   object-position: center;
 }
