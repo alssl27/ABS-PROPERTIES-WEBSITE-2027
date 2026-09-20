@@ -1759,95 +1759,51 @@ h2 {
 .site-header {
   min-height: 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  flex-direction: column;
+  align-items: stretch;
   padding: 0;
   background: #0f2a43;
 }
 .brand-banner {
   display: block;
-  flex: 1 1 auto;
-  min-width: 0;
+  width: 100%;
   margin: 0;
-  padding: 8px;
   background: white;
-  border: 4px solid #1769aa;
 }
 .brand-banner-image {
   display: block;
   width: 100%;
-  height: clamp(44px, 9vw, 120px);
-  object-fit: contain;
+  height: clamp(48px, 6.4vw, 88px);
+  object-fit: cover;
   object-position: center;
 }
-.header-links {
+.navigation-bar {
   display: flex;
-  flex: 0 0 auto;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 8px;
-  max-width: 430px;
-  padding: 12px 20px 12px 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #0f2a43;
 }
-.header-links a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 32px;
-  padding: 5px 10px;
-  color: white;
-  background: #1769aa;
-  border: 1px solid #2f8ed1;
-  border-radius: 3px;
-  font-size: 0.72rem;
-  line-height: 1.15;
-  text-align: center;
-  transition: background 0.18s ease, border-color 0.18s ease;
-}
-.header-links a:hover {
-  background: #0d4f83;
-  border-color: #7fc3ed;
-}
-@media (max-width: 760px) {
-  .site-header {
-    align-items: stretch;
-    flex-direction: column;
-    gap: 0;
-  }
-  .brand-banner {
-    flex-basis: auto;
-  }
-  .header-links {
-    justify-content: center;
-    max-width: none;
-    padding: 8px 12px;
-  }
-  .header-links a {
-    flex: 1 1 calc(25% - 8px);
-  }
-}
-/* Retain the shared nav layout for other site navigation surfaces. */
 .navigation-bar .nav {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(8, minmax(0, 1fr));
-  gap: 8px;
+  gap: 0;
 }
 .navigation-bar .nav a {
-  min-height: 20px;
+  min-height: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 2px 4px;
+  padding: 4px;
   color: white;
   background: transparent;
   border: 0;
   border-radius: 0;
   box-shadow: none;
   font-size: 0.68rem;
-  line-height: 1.15;
+  line-height: 1;
   text-decoration: none;
   transform: none;
 }
@@ -1862,7 +1818,7 @@ h2 {
 @media (max-width: 760px) {
   .navigation-bar {
     display: block;
-    padding: 4px 20px;
+    padding: 0;
   }
   .navigation-bar .nav {
     width: 100%;
