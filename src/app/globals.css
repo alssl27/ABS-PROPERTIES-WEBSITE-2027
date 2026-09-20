@@ -1758,12 +1758,16 @@ h2 {
 /* Banner header with navigation controls beneath it. */
 .site-header {
   min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   padding: 0;
   background: #0f2a43;
 }
 .brand-banner {
   display: block;
   width: 100%;
+  margin: 0;
   background: white;
 }
 .brand-banner-image {
@@ -1778,6 +1782,7 @@ h2 {
   display: flex;
   justify-content: center;
   width: 100%;
+  margin: 0;
   padding: 8px 20px;
   background: #0f2a43;
 }
@@ -1797,24 +1802,25 @@ h2 {
 .navigation-bar .nav {
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 0;
   z-index: 20;
   display: none;
-  width: min(360px, calc(100% - 40px));
-  padding: 10px;
+  width: 100%;
+  padding: 8px 20px;
   background: #0f2a43;
   border: 1px solid rgb(255 255 255 / 24%);
   box-shadow: 0 14px 24px rgb(15 28 29 / 20%);
-  transform: translateX(-50%);
 }
 .navigation-bar .nav.open {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 7px;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 8px;
 }
 .navigation-bar .nav a {
   justify-content: center;
   text-align: center;
+  padding-inline: 6px;
+  font-size: 0.78rem;
 }
 @media (max-width: 760px) {
   .navigation-bar {
@@ -1834,9 +1840,9 @@ h2 {
     padding: 10px 0 0;
     border: 0;
     box-shadow: none;
-    transform: none;
   }
   .navigation-bar .nav.open {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

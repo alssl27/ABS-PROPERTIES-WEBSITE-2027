@@ -61,7 +61,7 @@ export function Header() {
           aria-label="Main navigation"
         >
           {links.map(([label, href]) => (
-            <Link key={href} href={href} onClick={() => setOpen(false)}>
+            <Link key={label} href={href} onClick={() => setOpen(false)}>
               {label}
             </Link>
           ))}
