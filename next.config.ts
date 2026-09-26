@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 const config: NextConfig = {
   poweredByHeader: false,
+  async redirects() { return [{ source: "/:path*", has: [{ type: "host", value: "absproperties.uk" }], destination: "https://www.absproperties.uk/:path*", permanent: true }]; },
   async headers() {
     return [
       {

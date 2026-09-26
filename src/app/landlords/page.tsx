@@ -67,8 +67,8 @@ export default function Landlords() {
       <section className="trust-panel" aria-labelledby="trust-heading">
         <div className="trust-panel-image">
           <Image
-            src="/images/compliance-regulation.jpeg"
-            alt="Illustration representing policies, compliance and regulations"
+            src="/images/terraces.webp"
+            alt="Illustrative residential terraces"
             fill
             sizes="(max-width:760px) 100vw, 45vw"
           />
@@ -102,16 +102,15 @@ export default function Landlords() {
           <summary>What will it cost?</summary>
           <p>
             Fees and service packages have not yet been supplied for this
-            demonstration site. A verified, VAT-inclusive fee schedule must be
+            website. A verified, VAT-inclusive fee schedule must be
             published before launch. No price or service commitment is implied.
           </p>
         </details>
         <details>
           <summary>How do I arrange a valuation?</summary>
           <p>
-            Use the contact page to explore a valuation enquiry. In this
-            demonstration, no appointment is booked and no enquiry is sent
-            automatically.
+            Use the contact page to request a valuation. Our team will contact
+            you to confirm the details and arrange an appointment.
           </p>
         </details>
         <details>

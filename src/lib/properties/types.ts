@@ -1,5 +1,6 @@
-export type PropertyType = "Flat" | "House" | "Studio";
+export type PropertyType = "Flat" | "House" | "Studio" | "Bungalow" | "Land" | "Office" | "Retail" | "Industrial" | "Other";
 export type Property = {
+  listing?: import("./schema").Listing;
   id: string;
   slug: string;
   title: string;
@@ -21,6 +22,7 @@ export type Property = {
   floorArea: number;
 };
 export type PropertyQuery = {
+  mode?: string;
   location?: string;
   minBedrooms?: number;
   maxRent?: number;

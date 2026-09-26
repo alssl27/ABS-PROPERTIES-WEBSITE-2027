@@ -13,9 +13,10 @@ export function parsePropertyQuery(params: SearchParams): PropertyQuery {
   const furnished = one("furnished");
   const sort = one("sort");
   return {
+    mode: ["buy", "rent", "commercial"].includes(one("mode")) ? one("mode") : undefined,
     location: one("location").trim().slice(0, 100),
     minBedrooms: number("minBedrooms", 10),
-    maxRent: number("maxRent", 100000),
+    maxRent: number("maxRent", 1000000000),
     type: ["Flat", "House", "Studio"].includes(type)
       ? (type as PropertyType)
       : undefined,

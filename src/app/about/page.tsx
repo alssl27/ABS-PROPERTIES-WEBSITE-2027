@@ -17,7 +17,7 @@ export default function About() {
         <div className="content-image">
           <Image
             src="/images/office-gallery-oldham.jpeg"
-            alt="ABS Properties office location at Gallery Oldham"
+            alt="Gallery Oldham local area"
             fill
             sizes="(max-width:760px) 100vw, 50vw"
           />
@@ -35,7 +35,7 @@ export default function About() {
           </p>
           <p className="notice">
             Company history, team biographies, service areas and professional
-            credentials will be added once confirmed by ABS. This demonstration
+            credentials will be added once confirmed by ABS. This website
             makes no claims about memberships, awards or trading history.
           </p>
         </div>

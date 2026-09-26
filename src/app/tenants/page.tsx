@@ -40,7 +40,7 @@ export default function Tenants() {
           [
             "01",
             "Find your fit",
-            "Search by location, budget, bedrooms and the details that matter to you. All current listings are examples.",
+            "Search by location, budget, bedrooms and the details that matter to you.",
           ],
           [
             "02",
@@ -65,8 +65,8 @@ export default function Tenants() {
         <details>
           <summary>Can I book a viewing here?</summary>
           <p>
-            These are fictional properties. The enquiry journey is available to
-            explore, but this site does not accept viewing bookings.
+            Use the viewing enquiry link on a property page. Our team will contact
+            you to confirm availability and arrange an appointment.
           </p>
         </details>
         <details>
@@ -83,8 +83,7 @@ export default function Tenants() {
         <details>
           <summary>How do I report a repair?</summary>
           <p>
-            The maintenance reporting service is not connected in this
-            demonstration. Existing tenants should use the contact details in
+            For urgent repairs, existing tenants should use the contact details in
             their tenancy documents. Do not rely on this site for urgent
             assistance.
           </p>
@@ -92,9 +91,8 @@ export default function Tenants() {
         <details>
           <summary>Are property photographs and details accurate?</summary>
           <p>
-            All current photographs are AI-generated illustrations. Prices,
-            addresses, features and availability are mock data, not an offer to
-            let.
+            Property photographs and details are supplied by staff. Please confirm
+            the current availability and any details important to you with ABS.
           </p>
         </details>
       </section>

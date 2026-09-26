@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { site } from "@/lib/site";
 export function Footer() {
   const socialLinks = Object.entries(site.social).filter(([, href]) => href);
@@ -7,15 +7,15 @@ export function Footer() {
     <footer className="site-footer">
       <div className="footer-top">
         <div>
-          <Link href="/" className="brand">
+          <Link href="/" className="brand text-brand-only">
             <Image
-              className="brand-logo"
-              src="/images/abs-logo.png"
-              alt="ABS"
-              width={52}
-              height={94}
+              src="/images/abs-key-mark.jpeg"
+              alt="ABS Properties"
+              width={68}
+              height={68}
+              className="footer-brand-mark"
             />
-            <span>Properties</span>
+            <span>ABS Properties</span>
           </Link>
           <p>Homes, thoughtfully managed.</p>
           <p className="muted">UK lettings & property management.</p>
@@ -59,7 +59,7 @@ export function Footer() {
         </div>
       </div>
       <p className="small muted">
-        Demonstration website. Business registration, contact details, fees and
+        Business registration, contact details, fees and
         scheme memberships require verification before launch.
       </p>
     </footer>

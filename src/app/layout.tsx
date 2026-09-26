@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
+import { Manrope } from "next/font/google";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { site, isIndexable } from "@/lib/site";
 import "./globals.css";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -30,6 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image" },
 };
+
 const businessSchema = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
@@ -39,13 +48,14 @@ const businessSchema = {
   telephone: site.phone || undefined,
   address: site.officeAddress || undefined,
 };
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-GB">
+    <html lang="en-GB" className={manrope.variable}>
       <body>
         <a className="skip-link" href="#main">
           Skip to content
@@ -56,7 +66,7 @@ export default function RootLayout({
         <WhatsAppButton />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema).replace(/</g, "\\u003c") }}
         />
       </body>
     </html>

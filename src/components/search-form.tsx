@@ -12,6 +12,20 @@ export function SearchForm({
       className={"search-form" + (expanded ? " expanded" : "")}
       role="search"
     >
+      {expanded && <label>Listing type<select name="mode" defaultValue={query.mode || ""}><option value="">All properties</option><option value="rent">To rent</option><option value="buy">For sale</option><option value="commercial">Commercial</option></select></label>}
+      {!expanded && (
+        <fieldset className="search-mode">
+          <legend>Search for</legend>
+          <label>
+            <input type="radio" name="mode" value="rent" defaultChecked />
+            <span>Rent</span>
+          </label>
+          <label>
+            <input type="radio" name="mode" value="buy" />
+            <span>Buy</span>
+          </label>
+        </fieldset>
+      )}
       <label>
         Location
         <input
@@ -39,20 +53,20 @@ export function SearchForm({
         </select>
       </label>
       <label>
-        Max rent
+        Maximum price
         <select name="maxRent" defaultValue={query.maxRent ?? ""}>
           <option value="">Any price</option>
           {query.maxRent !== undefined &&
-            ![1250, 1500, 1750, 2000, 2500, 3000, 3500].includes(
+            ![1000, 1500, 2000, 3000, 100000, 200000, 300000, 500000].includes(
               query.maxRent,
             ) && (
               <option value={query.maxRent}>
-                £{query.maxRent.toLocaleString("en-GB")} pcm
+                £{query.maxRent.toLocaleString("en-GB")}
               </option>
             )}
           {[1250, 1500, 1750, 2000, 2500, 3000, 3500].map((n) => (
             <option key={n} value={n}>
-              £{n.toLocaleString("en-GB")} pcm
+              £{n.toLocaleString("en-GB")}
             </option>
           ))}
         </select>
@@ -81,8 +95,8 @@ export function SearchForm({
             Sort by
             <select name="sort" defaultValue={query.sort ?? ""}>
               <option value="">Featured</option>
-              <option value="rent-asc">Rent: low to high</option>
-              <option value="rent-desc">Rent: high to low</option>
+              <option value="rent-asc">Price: low to high</option>
+              <option value="rent-desc">Price: high to low</option>
               <option value="bedrooms">Most bedrooms</option>
             </select>
           </label>
@@ -93,7 +107,7 @@ export function SearchForm({
               value="true"
               defaultChecked={query.availableOnly}
             />{" "}
-            Available examples only
+            Available only
           </label>
         </>
       )}

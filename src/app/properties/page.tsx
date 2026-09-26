@@ -4,9 +4,9 @@ import { parsePropertyQuery, type SearchParams } from "@/lib/properties/query";
 import { PageIntro, PropertyCard, DemoNotice } from "@/components/ui";
 import { SearchForm } from "@/components/search-form";
 export const metadata = {
-  title: "Properties to let",
+  title: "Properties for sale and rent in Oldham",
   description:
-    "Explore demonstration rental properties with location, rent, bedroom and furnishing filters.",
+    "Explore properties for sale and to rent in Oldham and Greater Manchester.",
   alternates: { canonical: "/properties" },
 };
 export default async function PropertiesPage({
@@ -18,7 +18,7 @@ export default async function PropertiesPage({
   const query = parsePropertyQuery(params);
   const result = await properties.search(query);
   const hasFilters = Boolean(
-    query.location ||
+    query.mode || query.location ||
       query.minBedrooms !== undefined ||
       query.maxRent !== undefined ||
       query.type ||
@@ -43,7 +43,7 @@ export default async function PropertiesPage({
       <SearchForm key={JSON.stringify(query)} query={query} expanded />
       <div className="results-heading">
         <h2>
-          {result.total} example {result.total === 1 ? "home" : "homes"} found
+          {result.total} {result.total === 1 ? "home" : "homes"} found
         </h2>
         {hasFilters && (
           <Link className="text-link" href="/properties">
@@ -62,7 +62,7 @@ export default async function PropertiesPage({
           )}
           {query.type && <span>{query.type}</span>}
           {query.furnished && <span>{query.furnished}</span>}
-          {query.availableOnly && <span>Available examples</span>}
+          {query.availableOnly && <span>Available properties</span>}
           {query.sort && (
             <span>
               Sorted:{" "}

@@ -1,0 +1,42 @@
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import { PGlite } from "@electric-sql/pglite";
+test("database migration enforces staff, publication and storage access", async()=>{
+ const db=new PGlite();
+ try {
+ await db.exec(`create role anon; create role authenticated; create role service_role;
+ create schema auth; create schema storage;
+ create table auth.users(id uuid primary key);
+ create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
+ create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[]);
+ create table storage.objects(id uuid default gen_random_uuid(),bucket_id text,name text);
+ alter table storage.objects enable row level security;
+ create function storage.foldername(text) returns text[] language sql as $$select string_to_array($1,'/')$$;
+ grant usage on schema public,auth,storage to anon,authenticated;
+ grant select,insert on storage.objects to anon,authenticated;`);
+ await db.exec(await readFile("supabase/migrations/001_staff_properties.sql","utf8"));
+ await db.exec(`insert into auth.users values ('11111111-1111-4111-8111-111111111111'),('22222222-2222-4222-8222-222222222222');
+ insert into public.staff values ('11111111-1111-4111-8111-111111111111','EDITOR',true);
+ set role authenticated; set request.jwt.claim.sub='11111111-1111-4111-8111-111111111111';`);
+ await db.exec(`insert into public.properties(reference,title,listing_type,category,property_type,address_line1,town,postcode,price,price_unit,bedrooms,bathrooms) values ('QA-DRAFT','QA fixture','rent','Residential','House','QA address','Oldham','OL1 1AA',1000,'pcm',2,1)`);
+ const saved=await db.query<{created_by:string}>("select created_by from public.properties");assert.equal(saved.rows[0].created_by,"11111111-1111-4111-8111-111111111111");
+ await db.exec(`insert into storage.objects(bucket_id,name) values ('property-images','11111111-1111-4111-8111-111111111111/image.webp'); set role anon; set request.jwt.claim.sub='';`);
+ assert.equal((await db.query("select * from public.properties")).rows.length,0);
+ assert.equal((await db.query("select * from storage.objects")).rows.length,0);
+ await assert.rejects(db.exec("update public.properties set status='Available'"));
+ await db.exec(`set role authenticated; set request.jwt.claim.sub='22222222-2222-4222-8222-222222222222';`);
+ assert.equal((await db.query("select * from public.properties")).rows.length,0);
+ await assert.rejects(db.exec(`insert into public.staff values ('22222222-2222-4222-8222-222222222222','ADMIN',true)`));
+ await db.exec(`set request.jwt.claim.sub='11111111-1111-4111-8111-111111111111';`);
+ await assert.rejects(db.exec("update public.properties set status='Available'"));
+ await db.exec(`update public.properties set status='Available',description='Verified marketing description for this test fixture.',images=array['11111111-1111-4111-8111-111111111111/image.webp'];set role anon;set request.jwt.claim.sub='';`);
+ assert.equal((await db.query("select * from public.properties")).rows.length,1);
+ assert.equal((await db.query("select * from storage.objects")).rows.length,1);
+ await db.exec(`set role authenticated;set request.jwt.claim.sub='11111111-1111-4111-8111-111111111111';update public.properties set status='Archived';set role anon;set request.jwt.claim.sub='';`);
+ assert.equal((await db.query("select * from public.properties")).rows.length,0);
+ assert.equal((await db.query("select * from storage.objects")).rows.length,0);
+ await db.exec(`reset role;update public.staff set active=false;set role authenticated;set request.jwt.claim.sub='11111111-1111-4111-8111-111111111111';`);
+ assert.equal((await db.query("select * from public.properties")).rows.length,0);
+ } finally {await db.close();}
+});

@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       ...(isIndexable
-        ? { allow: "/", disallow: ["/legal/", "/contact"] }
+        ? { allow: "/", disallow: ["/admin/", "/api/"] }
         : { disallow: "/" }),
     },
     sitemap: site.url + "/sitemap.xml",

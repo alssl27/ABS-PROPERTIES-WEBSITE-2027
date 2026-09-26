@@ -38,17 +38,18 @@ export function PropertyCard({ property: p }: { property: Property }) {
     <article className="property-card">
       <Link href={"/properties/" + p.slug} className="property-photo">
         <Image
+          unoptimized={Boolean(p.listing)}
           src={p.image}
           alt={p.imageAlt}
           fill
           sizes="(max-width: 650px) 100vw, (max-width: 1000px) 50vw, 33vw"
         />
         <span className="photo-label">
-          {p.available ? "Available example" : "Let agreed example"}
+          {p.listing?.status || ""}
         </span>
       </Link>
       <div className="property-price">
-        {money(p.rentPcm)} <span>pcm</span>
+        {p.listing?.price_qualifier} {money(p.rentPcm)} <span>{p.listing?.price_unit === "sale" ? "" : p.listing?.price_unit}</span>
       </div>
       <h3>
         <Link href={"/properties/" + p.slug}>
@@ -85,14 +86,7 @@ export function PageIntro({
     </div>
   );
 }
-export function DemoNotice() {
-  return (
-    <p className="notice">
-      Demonstration site: all properties, rents, details and images are
-      illustrative. No live availability or bookings.
-    </p>
-  );
-}
+export function DemoNotice() { return null; }
 export function CallToAction() {
   return (
     <section className="cta">

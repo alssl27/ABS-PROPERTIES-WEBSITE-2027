@@ -11,8 +11,8 @@ export const legalPages: Record<
     description: "Placeholder for the ABS Properties privacy notice.",
     sections: [
       {
-        heading: "Current demonstration behaviour",
-        text: "This demonstration has no enquiry backend, analytics, advertising trackers or application database. Enquiry preview values stay in the current page and are not submitted to ABS. If a contact email is configured and you choose Open email draft, your email application receives the draft. You decide whether to send it.",
+        heading: "Enquiries and staff access",
+        text: "When enabled, enquiry forms store your name, email address, enquiry topic, property reference and message in the ABS database hosted by Supabase. Cloudflare Turnstile checks submissions for spam. Authorised staff use Supabase authentication to manage properties and review enquiries.",
       },
       {
         heading: "Hosting and technical data",
@@ -26,11 +26,11 @@ export const legalPages: Record<
   },
   cookies: {
     title: "Cookies",
-    description: "Placeholder cookie information for this demonstration.",
+    description: "Cookie and storage information pending final review.",
     sections: [
       {
         heading: "This site",
-        text: "The application does not intentionally set analytics, advertising or preference cookies, or store enquiry details in local storage. Hosting and preview tools may behave separately; audit the deployed site before launch.",
+        text: "Staff sign-in sets the essential abs_access_token cookie for the lifetime of the authentication token. It is HTTP-only and Secure in production. Public enquiry forms use Cloudflare Turnstile for spam protection when configured. The application does not set analytics or advertising cookies. Hosting services may process additional technical data.",
       },
       {
         heading: "Before adding tracking",
@@ -43,8 +43,8 @@ export const legalPages: Record<
     description: "Placeholder terms for the ABS Properties website.",
     sections: [
       {
-        heading: "Demonstration content",
-        text: "All property listings, prices, availability, images, energy ratings, council tax bands and other property details are fictional examples. They are not an offer to let. No booking, valuation or agency instruction can be completed through this demonstration.",
+        heading: "Property information and enquiries",
+        text: "Property listings are supplied by authorised staff. Confirm the current availability and material details with ABS before making a decision. Viewing and valuation requests do not confirm an appointment; staff will contact you to arrange it.",
       },
       {
         heading: "Business information to confirm",
@@ -63,7 +63,7 @@ export const legalPages: Record<
     sections: [
       {
         heading: "Fees and deposits",
-        text: "Landlord fees, applicable tenant payments and deposit arrangements have not been supplied. Publish a clear verified schedule, including VAT treatment and the scope of each service, before taking instructions or publishing real listings. Mock deposit figures are demonstration data only.",
+        text: "Landlord fees, applicable tenant payments and deposit arrangements have not been supplied. Publish a clear verified schedule, including VAT treatment and the scope of each service, before taking instructions or publishing real listings.",
       },
       {
         heading: "Client money protection",
@@ -81,7 +81,7 @@ export const legalPages: Record<
     sections: [
       {
         heading: "How to raise a complaint",
-        text: "The company complaint contact, postal address, response times and escalation process are awaiting confirmation. This demonstration is not a monitored complaints channel. Existing clients should use their contractual contact details.",
+        text: "The company complaint contact, postal address, response times and escalation process are awaiting confirmation. The general enquiry form is not a dedicated complaints channel. Existing clients should use their contractual contact details.",
       },
       {
         heading: "Independent redress",

@@ -37,8 +37,7 @@ export default async function Contact({
           </div>
           <h2>Start with a conversation.</h2>
           <p>
-            Tell us a little about what you are looking for using the enquiry
-            preview.
+            Tell us a little about what you are looking for using the enquiry form.
           </p>
           {site.email ? (
             <p>
@@ -60,13 +59,12 @@ export default async function Contact({
             </p>
           )}
           <p className="notice">
-            This demonstration does not offer a live contact or emergency
-            reporting service. Existing tenants should refer to their tenancy
+            This form is not an emergency reporting service. Existing tenants should refer to their tenancy
             documents.
           </p>
         </div>
         <ContactForm
-          property={property?.title}
+          property={property ? property.title + " / " + property.listing?.reference : ""}
           topic={topic}
           email={site.email}
         />
